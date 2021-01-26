@@ -28,9 +28,7 @@ namespace OgrenciTakip.DAL.Base
         public void Insert(IEnumerable<T> entities)
         {
             foreach (var entity in entities)
-            {
                 _context.Entry(entity).State = EntityState.Added;
-            }
         }
         public void Update(T entity)
         {
@@ -39,9 +37,7 @@ namespace OgrenciTakip.DAL.Base
         public void Update(IEnumerable<T> entities)
         {
             foreach (var entity in entities)
-            {
                 _context.Entry(entity).State = EntityState.Modified;
-            }
         }
 
         public void Update(T entity, IEnumerable<string> fields)
@@ -49,9 +45,7 @@ namespace OgrenciTakip.DAL.Base
             _dbSet.Attach(entity);
             var entry = _context.Entry(entity);
             foreach (var field in fields)
-            {
                 entry.Property(field).IsModified = true;
-            }
         }
 
         public void Delete(T entity)
@@ -61,9 +55,7 @@ namespace OgrenciTakip.DAL.Base
         public void Delete(IEnumerable<T> entities)
         {
             foreach (var entity in entities)
-            {
                 _context.Entry(entity).State = EntityState.Deleted;
-            }
         }
         public TResult Find<TResult>(Expression<Func<T, bool>> filter, Expression<Func<T, TResult>> selector)
         {
